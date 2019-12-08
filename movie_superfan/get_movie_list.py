@@ -3,7 +3,7 @@ from .models import Movie
 
 def get_movie_data(request):
 
-    url = 'https://api.themoviedb.org/3/movie/upcoming?language=en-US&api_key=e57a66af857105a473e4b8fb6d45c63e&append_to_response=videos,images'
+    url = 'https://api.themoviedb.org/3/movie/upcoming?language=en-US&api_key=e57a66af857105a473e4b8fb6d45c63e&append_to_response=images'
     data = requests.get(url).json()
 
     movie_data = data['results']
