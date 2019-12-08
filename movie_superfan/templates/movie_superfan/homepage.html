@@ -1,0 +1,18 @@
+{% extends "movie_superfan/base.html" %}
+{% block content %}
+	{% for movie in movies %}
+		<article class="media content-section">
+			<div class="media-body">
+				<div class="article-metadata" >
+					<!-- Movie detail page -->
+					<h2><a class="mr-2" href="{% url 'movie_detail' movie_pk=movie.pk %}">{{ movie.name }}</a></h2>
+				</div>
+				{% if movie.poster %}
+					<img src="https://image.tmdb.org/t/p/w1280/{{ movie.poster }}" height=350 width=260>
+				{% else %}
+					<P>No poster available</P>
+				{% endif %}
+			</div>
+		</article>
+	{% endfor %}
+{% endblock content %}
