@@ -30,7 +30,7 @@
                     </div>
                     <!-- Search bar, login, and sign up -->
                     <div class="navbar-nav">
-                        <a class="nav-item nav-link" href="#">Login</a>
+                        <a class="nav-item nav-link" href="#">Log In</a>
                         <a class="nav-item nav-link" href="#">Sign Up</a>
                         <form class="nav-item nav-link" method='GET' action = '' >
                             <input name = 'q' value='{{ request.GET.q }}' type= 'text'  placeholder='Search movies' />
@@ -40,12 +40,31 @@
                 </div>
             </nav>
     </header>
+    <main role="main" class="container">
+        <div class="row">
+            <div class="col-md-8">
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="alert alert-{{ message.tags }}">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+                {% block content %}{% endblock %}
+            </div>
+            <div class="col-mn-4">
+                <div class="content-section">
+                    <h3>Our Sidebar</h3>
+                    <p class='text-muted'>You can put any information here>
+                        <ul class="list-group">
+                            <li class="list-group-item list-group-item-light">Latest Post</li>
+                        </ul>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </main>
     <br/>
-
-    <div class="container">
-        {% block content %}
-        {% endblock %}
-    </div>
     
 	<!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
