@@ -6,12 +6,12 @@ from .forms import UserRegisterForm
 # Create your views here.
 def movie_list(request):
     movies = Movie.objects.all()
-
+    
     query = request.GET.get('q')
     if query:
         queryset = movies.filter(name__icontains=query)
 
-    return render(request, 'movie_superfan/movie_list.html', { 'movies' : movies }, { 'name' : 'List'})
+    return render(request, 'movie_superfan/movie_list.html', { 'movies' : movies }, { 'name' : 'List' })
 
 def movie_detail(request, movie_pk):
     movie = get_object_or_404(Movie, pk=movie_pk)

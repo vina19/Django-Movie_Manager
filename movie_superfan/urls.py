@@ -1,6 +1,6 @@
 from django.urls import path
 from django.contrib.auth import views as auth_views
-from . import views, get_movie_list, get_movie_video
+from . import views
 
 urlpatterns = [
     path('', views.movie_list, name='movie_list'),
@@ -8,6 +8,5 @@ urlpatterns = [
     path('userprofile/', views.user_profile, name='user_profile'),
     path('registrationform/', views.user_register, name='user_register'),
     path('login/', auth_views.LoginView.as_view(template_name='movie_superfan/users/user_login.html'), name='user_login'),
-    path('logout/', auth_views.LogoutView.as_view(template_name='movie_superfan/users/user_logout.html'), name='user_logout'),  
-    #path('movievideo/', get_movie_video.get_youtube_link, name='movie_video'),
+    path('logout/', auth_views.LogoutView.as_view(template_name='movie_superfan/users/user_logout.html'), name='user_logout'),
 ]
