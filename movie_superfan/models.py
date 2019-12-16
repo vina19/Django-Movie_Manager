@@ -15,10 +15,3 @@ class Movie(models.Model):
     def __str__(self):
         poster_str = self.poster.url if self.poster else 'no poster'
         return self.name
-
-class HighestRevenueMovie(models.Model):
-    name = models.CharField(max_length=300)
-    revenue = models.IntegerField()
-
-    def __str__(self):
-        return self.name
