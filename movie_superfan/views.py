@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from .models import Movie
 from .forms import UserRegisterForm
 
@@ -29,5 +30,6 @@ def user_register(request):
         form = UserRegisterForm()
     return render(request, 'movie_superfan/users/user_register.html', { 'form' : form })
 
+@login_required
 def user_profile(request):
-    return render(request, 'movie_superfan/userprofile_page.html')
+    return render(request, 'movie_superfan/users/user_profile.html')
