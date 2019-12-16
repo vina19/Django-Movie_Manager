@@ -2,6 +2,8 @@ from django.urls import path
 from django.contrib.auth import views as auth_views
 from . import views
 
+#app_name = 'movie_superfan'
+
 urlpatterns = [
     path('', views.movie_list, name='movie_list'),
     path('movies/<int:movie_pk>/', views.movie_detail, name='movie_detail'),
