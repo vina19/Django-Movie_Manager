@@ -11,4 +11,6 @@ urlpatterns = [
     path('registrationform/', views.user_register, name='user_register'),
     path('login/', auth_views.LoginView.as_view(template_name='movie_superfan/users/user_login.html'), name='user_login'),
     path('logout/', auth_views.LogoutView.as_view(template_name='movie_superfan/users/user_logout.html'), name='user_logout'),
+
+    path('testmoviedetail', views.test_movie_detail)
 ]
