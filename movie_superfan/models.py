@@ -1,10 +1,11 @@
 from django.db import models
 from django.utils import timezone
-from django.contrib.auth.models import User
+from django.contrib.auth.models import AbstractUser
+from movie_manager import settings
 
-User._meta.get_field('email')._unique = True
+class CustomUser(AbstractUser):
+    email = models.EmailField(unique=True)
 
-# Create Movie model
 class Movie(models.Model):
     name = models.CharField(max_length=300)
     year = models.CharField(max_length=5)
@@ -20,7 +21,7 @@ class Movie(models.Model):
 
 class Comment(models.Model):
     movie_title = models.ForeignKey(Movie, blank=False, on_delete=models.CASCADE)
-    user = models.ForeignKey('auth.User', blank=False, on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, blank=False, on_delete=models.CASCADE)
     title = models.CharField(max_length=200, blank=False)
     text = models.TextField(max_length=500, blank=False)
     posted_date = models.DateTimeField(blank=False)
@@ -31,4 +32,10 @@ class Comment(models.Model):
 
     def __str__(self):
         return 'Comment from user ID {} for movie {}'.format(self.user, self.movie_title)
-    
+
+class UserProfile(models.Model):
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    image = models.ImageField(default='default.jpg', upload_to='profile_pics')
+
+    def __str__(self):
+        return '{} Profile'.format(self.user)

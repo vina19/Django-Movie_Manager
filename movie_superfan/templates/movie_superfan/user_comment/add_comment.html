@@ -1,0 +1,19 @@
+{% extends "movie_superfan/base.html" %}
+{% block content %}
+	<article class="media content-section">
+		<div class="media-body">
+			<div class="article-metadata">
+				<h2>Comment for {{ movie.name }}</h2>
+			</div>
+            <div class="content-section">
+                <form method="POST" action="{% url 'add_comment' movie_pk=movie.pk %}">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <div class="form-group">
+                        <button class="btn btn-outline-info" type="submit">Add Comment</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+	</article>
+{% endblock content %}
