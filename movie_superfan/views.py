@@ -3,6 +3,8 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .models import Movie
 from .forms import UserRegisterForm
+from .views_movie_list import get_movie_data
+from .views_movie_video import youtube_video
 
 # Create your views here.
 def movie_list(request):
@@ -12,10 +14,11 @@ def movie_list(request):
     if query:
         queryset = movies.filter(name__icontains=query)
 
-    return render(request, 'movie_superfan/movie_list.html', { 'movies' : movies }, { 'name' : 'List' })
+    return render(request, 'movie_superfan/movie_list.html', { 'movies' : movies , 'name' : 'List' })
 
 def movie_detail(request, movie_pk):
     movie = get_object_or_404(Movie, pk=movie_pk)
+    movie_video = youtube_video(movie)
     return render(request, 'movie_superfan/movie_detail.html', { 'movie' : movie })
 
 def user_register(request):

@@ -10,12 +10,12 @@ YOUTUBE_API_VERSION = 'v3'
 
 def youtube_video(movie):
     try:
-        youtube = build(YOUTUBE_API_SERVICE_NAME, YOUTUBE_API_VERSION, key=AIzaSyBEMxjsUi-WkYgedHukqFtq57IliTglPU4)
+        youtube = build(YOUTUBE_API_SERVICE_NAME, YOUTUBE_API_VERSION, developerKey='AIzaSyBEMxjsUi-WkYgedHukqFtq57IliTglPU4')
 
         search_response = youtube.search().list(
             q= movie.name,
             part='id, snippet',
-            maxResult=1,
+            maxResults=1,
             type='trailer',
             safeSearch='strict'
         ).execute()
@@ -25,7 +25,8 @@ def youtube_video(movie):
 
         video_id = first_result['id']['videoId']
 
-        Movie(trailer=video_id).save()
+        movie.trailer = video_id
+        movie.save()
     
     except Exception as e:
         print(e)

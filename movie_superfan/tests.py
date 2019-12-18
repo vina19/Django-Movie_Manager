@@ -15,13 +15,13 @@ class MovieModelTest(TestCase):
         movie_name = Movie(name='Parasit')
         self.assertEqual(str(movie_name), movie_name.name)
 
-class MovieProjectTests(TestCase):
+class MovieProjectTest(TestCase):
 
     def test_homepage(self):
         response = self.client.get(reverse('movie_list'))
         self.assertEqual(response.status_code, 200)
 
-class testMovieViews(TestCase):
+class TestsMovieViews(TestCase):
 
     fixture = ['testing_movies']
 
@@ -30,7 +30,18 @@ class testMovieViews(TestCase):
         response = self.client.get(reverse('movie_list'))
         self.assertTemplateUsed(response, 'movie_superfan/movie_list.html')
 
-    def test_correct_template_used_for_display_movie_detail(self):
+    # def test_correct_template_used_for_display_movie_detail(self):
 
-        response = self.client.get(reverse('movie_detail', kwargs={'movie_pk':1}))
-        self.assertTemplateUsed(response, 'movie_superfan/movie_detail.html')
+    #     response = self.client.get(reverse('movie_detail', kwargs={'movie_pk':1}))
+    #     self.assertTemplateUsed(response, 'movie_superfan/movie_detail.html')
+
+class TestsUserViews(TestCase):
+
+    fixture = ['testing_users']
+
+    def test_user_logout_display(self):
+        
+        response = self.client.get(reverse('user_logout'))
+        self.assertContains(response, 'You have been logged out')
+
+    
