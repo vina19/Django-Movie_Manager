@@ -7,6 +7,7 @@ from movie_superfan.models import Movie, Comment, UserProfile, CustomUser
 class TestMovieModel(TestCase):
 
     def test_str_movie_title(self):
+
         movie_name = Movie(name='Parasit')
         self.assertEqual(str(movie_name), movie_name.name)
 
@@ -14,6 +15,7 @@ class TestMovieModel(TestCase):
 class TestCommentModel(TestCase):
 
     def test_str_comment_title(self):
+
         movie = Movie(name='Parasit')
         user1 = CustomUser(username='najef')
         comment_title = Comment(user=user1, movie_title=movie)
@@ -23,6 +25,7 @@ class TestCommentModel(TestCase):
 class TestUserProfileModel(TestCase):
 
     def test_str_userprofile_title(self):
+        
         user1 = CustomUser(username='najef')
         user_profile = UserProfile(user=user1)
         self.assertEqual(str(user_profile), '{} Profile'.format(user_profile.user))
