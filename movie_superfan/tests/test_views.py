@@ -4,19 +4,39 @@ from django.urls import reverse
 from django.contrib import auth
 
 from movie_superfan.models import Movie
+from movie_superfan.views import movie_detail, movie_list, user_profile, user_register 
 from django.contrib.auth.models import User
 
 import re
 
-class TestMovieViews(TestCase):
+class TestMovieProject(TestCase):
+
+    def test_homepage(self):
+        response = self.client.get(reverse('movie_list'))
+        self.assertEqual(response.status_code, 200)
+
+class TestsMovieViews(TestCase):
 
     fixture = ['testing_movies']
 
     def test_correct_template_used_for_display_movie_list(self):
-        response = self.client.get(reverse('movie_superfan:movie_list'))
+        
+        response = self.client.get(reverse('movie_list'))
         self.assertTemplateUsed(response, 'movie_superfan/movie_list.html')
 
-    def test_correct_tempalate_used_for_display_movie_detail(self):
-        response = self.client.get(reverse('movie_superfan:movie_detail'))
-        self.assertTemplateUsed(response, 'movie_superfan/movie_detail.html')
+    # def test_correct_template_used_for_display_movie_detail(self):
+
+    #     response = self.client.get(reverse('movie_detail', kwargs={'movie_pk':1}))
+    #     self.assertTemplateUsed(response, 'movie_superfan/movie_detail.html')
+
+class TestsUserViews(TestCase):
+
+    fixture = ['testing_users']
+
+    def test_user_logout_display(self):
+        
+        response = self.client.get(reverse('user_logout'))
+        self.assertContains(response, 'You have been logged out')
+
+    
     

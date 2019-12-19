@@ -3,6 +3,7 @@ from django.utils import timezone
 from django.contrib.auth.models import AbstractUser
 from movie_manager import settings
 
+# https://stackoverflow.com/questions/53461410/make-user-email-unique-django
 class CustomUser(AbstractUser):
     email = models.EmailField(unique=True)
 
