@@ -56,7 +56,3 @@ class TestLoginForm(TestCase):
         user_data = { 'username' : 'najef', 'email' : 'new_najef@gmail.com', 'password1' : 'abcd1234defg', 'password2' : 'abcd1234defg' }
         form = UserRegisterForm(user_data)
         self.assertFalse(form.is_valid())
-
-    
-
-        
