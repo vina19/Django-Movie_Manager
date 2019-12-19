@@ -2,7 +2,7 @@ from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from django.forms import ValidationError
-from .models import CustomUser
+from .models import Movie, CustomUser
 
 class UserRegisterForm(UserCreationForm):
 
@@ -31,3 +31,8 @@ class UserRegisterForm(UserCreationForm):
             user.save()
         
         return user
+
+class WatchedMovieForm(forms.ModelForm):
+    class Meta:
+        model = Movie
+        fields = ('name', 'poster')

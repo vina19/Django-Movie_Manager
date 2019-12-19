@@ -1,5 +1,22 @@
 {% extends "movie_superfan/base.html" %}
 {% load crispy_forms_tags %}
 {% block content %}
-    <h1>{{ user.username }}</h1>
+<article class="media content-section">
+	<div class="media-body">
+		<div class="article-metadata">
+            <h2>{{ user.username }}'s Watched Movie</h2><br/>
+            {% if watched %}
+            </div>
+                {% for movie in watched %}
+                <p class="article-content">
+                    <li>{{ movie.favorite_movie }}</li>
+                </p>
+                {% endfor %}
+			{% else %}
+                <p>You have no watched movies.</p>
+            {% endif %}
+            </div>
+        </div>
+    </div>
+</article>
 {% endblock content %}

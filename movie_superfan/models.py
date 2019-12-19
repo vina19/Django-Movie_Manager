@@ -2,6 +2,7 @@ from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import AbstractUser
 from movie_manager import settings
+from django.urls import reverse
 
 # https://stackoverflow.com/questions/53461410/make-user-email-unique-django
 class CustomUser(AbstractUser):
@@ -27,3 +28,6 @@ class UserProfile(models.Model):
 
     def __str__(self):
         return '{} Profile'.format(self.user)
+    
+    def get_absolute_url(self):
+        return reverse('detail', kwargs={ 'id' : self.id })
