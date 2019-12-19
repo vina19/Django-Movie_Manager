@@ -67,15 +67,9 @@ class TestsUserViews(TestCase):
         user1 = auth.get_user(self.client)
 
         self.assertContains(response, 'Account created for {}! You can now log in!'.format(user1))
-
+        
     # Test if the logout page contains the right message to the user.
     def test_user_logout_display_message(self):
         
         response = self.client.get(reverse('user_logout'))
         self.assertContains(response, 'You have been logged out')
-    
-    
-
-
-    
-    
