@@ -20,6 +20,9 @@
     python manage.py test movie_superfan.tests.test_models
     python manage.py test movie_superfan.tests.test_views
     python manage.py test movie_superfan.tests.test_forms
+    
+## Live Link to Deployed App
+[https://vina19.github.io/Django-Movie_Manager/](https://vina19.github.io/Django-Movie_Manager/)
 
 ## Login Page
 ![loginpage](https://user-images.githubusercontent.com/46719712/71199630-f8d07200-225b-11ea-88d8-a3f991c3f495.JPG)
