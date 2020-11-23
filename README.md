@@ -7,8 +7,8 @@
 
 ## Getting Started
 #### 1. Create and activate a virtual environment.
-    Macs python3 -m venv env | env/bin/activate
-    Windows PC python -m venv env | env/script/activate
+    Macs python3 -m venv env | env\bin\activate
+    Windows PC python -m venv env | env\Scripts\activate
 #### 2. pip install -r requirements.txt
 #### 3. python manage.py makemigrations movie_superfan
 #### 4. python manage.py migrate
